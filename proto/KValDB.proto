@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "gRPC/proto";
+
+service KValDB {
+	rpc Get(GetRequest) returns (GetResponse) {};
+	rpc Set(SetRequest) returns (Empty) {}
+}
+
+message GetRequest {
+	string dbname = 1;
+	string key = 2;
+}
+
+message GetResponse {
+	string key = 1;
+	string value = 2;
+}
+
+message SetRequest {
+	string dbname = 1;
+	string key = 2;
+	string value = 3;
+}
+
+message Empty {
+}
